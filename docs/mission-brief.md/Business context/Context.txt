@@ -1,0 +1,14 @@
+What is this system?
+A cars buying guide site which contains car booking, car searching, buget, reviews, customer experiences
+
+Who are the users?
+End users on web/mobile clients searching and decide to buy cars.
+
+What matters for them?
+They care that search/browse feel fast and booking does not fail or hang.
+
+What is the basic traffic expectation?
+We assume a peak of maybe 50–100 requests per second across search+book in the first version; we’ll tune this later as we model.
+
+Why are we doing performance work?
+Goal is to keep checkout latency and error rate within agreed SLOs so we don’t lose sales when traffic spikes.

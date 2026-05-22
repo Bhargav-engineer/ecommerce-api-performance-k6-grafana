@@ -1,0 +1,27 @@
+Goal: Define 2–3 SLOs that are realistic and structured like real SRE teams use: percentile latencies and success rates over a time window, not “always fast.”
+
+Industry examples commonly define SLOs like “p95 under 300 ms for 95–99% of requests” and “99.9% of requests succeed.”
+
+Step 1 – Choose key flows (5 minutes)
+Pick 2–3 flows:
+Product browse/search.
+Product details.
+Checkout.
+
+Step 2 – Define SLI types
+For each flow, define:
+Latency SLI: percentile for response time (p95, optionally track p99).
+Availability / success rate SLI: % of successful responses (non‑5xx).
+Optional: Resource utilization SLI: CPU usage on app container.
+
+Step 3 – Turn into concrete SLOs
+Use this simple template from SRE/SaaS practices:
+“For the checkout endpoint, over a rolling 7‑day window:
+At least 95% of requests complete in under 300 ms (p95 latency SLO).
+At least 99% of requests succeed (no 5xx errors).
+Under target load, average CPU usage on the API container remains below 70%.”
+
+For browse:
+“For browse/search endpoints, over a rolling 7‑day window:
+At least 95% of requests complete in under 250 ms.
+At least 99.5% of requests succeed.”

@@ -1,0 +1,69 @@
+Goal: Convert “users browse and buy” into explicit flows and ratios you’ll later turn into k6 scenarios.
+
+Workload modeling guidelines for e‑commerce usually:
+Identify key actions (home, browse, search, add to cart, checkout).
+Group actions into user profiles.
+Assign ratios and think times.
+
+Step 1 – Define user actions (10 minutes)
+Inspired by SmartBear and other load testing guides, typical e‑commerce actions:
+
+Visit home page / catalog listing.
+Search or filter products.
+View product details.
+Add item to cart.
+View cart.
+Checkout (place order).
+List them briefly.
+
+Step 2 – Define user journeys (profiles)
+Create 3–4 profiles with different behaviors, like SmartBear’s advice.
+
+Example:
+Browser (majority):
+Actions: home → browse catalog → product details → maybe another product → leave.
+No checkout.
+
+Buyer:
+Actions: home → browse → product details → add to cart → view cart → checkout.
+Search‑heavy user:
+Actions: home → search → results page → product details → maybe add to cart.
+
+Step 3 – Assign ratios and arrival rates
+Even if numbers are approximate, write explicit ratios:
+
+Example:
+
+60% Browser profile.
+
+25% Buyer profile.
+
+15% Search‑heavy.
+
+For arrival rate, you can start with something like:
+
+Peak: 50 requests per second across all profiles (for now).
+
+Under this, how many are checkout vs browse?
+
+If 25% of users are Buyers and each Buyer does one checkout, maybe 5–10 checkout RPS at peak.
+
+You can refine later with Little’s Law like in Radview’s guide; for now, explicit but approximate is enough.
+
+Step 4 – Write it clearly
+In the brief:
+
+Describe each profile: sequence + think time (e.g., 3–5 seconds between pages).
+
+State the percentages and expected RPS at peak.
+
+Example text:
+
+We define three user profiles:
+
+Browser (60% of users): home → browse catalog → view 2–3 product detail pages with 3–5 seconds between views, then exit.
+
+Buyer (25% of users): home → browse → product detail → add to cart → view cart → checkout, with 3–5 seconds between steps.
+
+Search‑heavy user (15% of users): home → search → results page → product detail → optional add to cart.
+At peak we assume roughly 50 requests per second across these flows, with checkout representing approximately 5–10 RPS. These numbers are initial assumptions that will be validated and adjusted based on test results.

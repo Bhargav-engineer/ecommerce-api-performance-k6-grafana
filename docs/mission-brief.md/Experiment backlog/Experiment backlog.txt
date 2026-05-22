@@ -1,0 +1,15 @@
+Components:
+
+Client (web/mobile).
+API service (Node/Express or FastAPI — whatever you picked Day 1/5).
+Database (PostgreSQL/MySQL).
+Optional cache (Redis) for later experiments.
+
+Data flow:
+Browse/search: client → API → DB (read).
+Checkout: client → API → DB (write), maybe external payment (simulated later).
+Where you expect to run it:
+Local Docker Compose environment initially; could map to a cloud deployment later.
+
+Example structure
+The system consists of a single REST API service backed by a relational database. A web or mobile client sends HTTP requests to the API, which handles product catalog reads, cart updates, and order creation. Catalog reads (list/search products) are served by the API querying the database, potentially cached in Redis in later iterations to reduce read latency. Checkout writes orders and updates inventory in the database and may simulate an external payment service in future experiments. In this case study the entire stack runs locally via Docker Compose (API container + PostgreSQL + optional Redis), but the architecture is intentionally similar to how a small production service would run in the cloud.

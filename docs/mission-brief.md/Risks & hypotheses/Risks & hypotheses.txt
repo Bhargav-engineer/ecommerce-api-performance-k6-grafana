@@ -1,0 +1,12 @@
+Goal: Show you can predict where bottlenecks and SLO violations will likely happen before running tests.
+
+Drawing from typical tail‑latency sources (DB, cache misses, dependency slowness) and what Redis/monitoring articles point out as p95 drivers:
+
+Bullet Points:
+Checkout is likely to be DB‑bound due to multiple writes (orders, payments, inventory), so p95 may exceed 300 ms under moderate write load.
+Catalog search might involve LIKE or non‑indexed fields, leading to higher p95 latency on large product tables.
+If connection pools or thread pools are undersized, some requests may wait in queues, increasing tail latency.
+Lack of caching for popular product pages could cause unnecessary DB load during peak traffic.
+External payment gateway simulations (if added) may inflate checkout latency and error rate when that dependency is slow.
+CPU saturation in the API container under load may cause increased latency even when the DB is healthy.
+These become your hypotheses you’ll later confirm or refute using k6 + metrics.
