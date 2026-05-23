@@ -15,6 +15,8 @@ The target system is a simple e‑commerce backend with:
 
 Initially, tests target a public demo endpoint and then will be switched to this local e‑commerce API as it evolves.
 
+The API is implemented as a Node.js + Express service exposing REST endpoints for products, cart, and checkout, backed by a relational database (PostgreSQL) in later iterations.
+
 ## Performance Goals (SLOs)
 
 For this case study, the main SLOs are:
@@ -43,6 +45,12 @@ Initial peak assumption: ~50 requests per second across these flows, with checko
 - Database: PostgreSQL (planned).
 - Observability: Grafana + Prometheus or APM tool (planned).
 - Containerization: Docker / Docker Compose.
+- Backend API: Node.js + Express
+- Load testing: k6 (JavaScript-based scenarios)
+- Legacy / comparison: Apache JMeter (planned)
+- Database: PostgreSQL (planned)
+- Observability: Grafana + Prometheus or APM tool (planned)
+- Containerization: Docker / Docker Compose (planned)
 
 - ## Getting Started (Current State)
 
@@ -75,6 +83,8 @@ This will execute a small load test against a public test endpoint and print lat
 - ⏳ k6 scenarios aligned with user journeys (baseline, stress, soak).
 - ⏳ Docker Compose stack (API + DB + Grafana/Prometheus).
 - ⏳ CI integration (GitHub Actions running k6 tests on pushes / PRs).
+- ✅ Basic Node.js + Express API scaffold running locally with `/health` and `/api/products` endpoints.
+- ✅ Initial API design documented in `docs/api-design.md` (products, cart, checkout).
 
 ## Roadmap (Next Steps)
 
