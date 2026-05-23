@@ -25,6 +25,6 @@ Checks passed 100%, confirming that the basic script and endpoints are healthy.
 This test uses a constant VU model, which is sufficient for validating mechanics, but later scenarios will shift to arrival‑rate or more realistic profiles.
 
 ## 5. Next Steps
-Migrate this scenario from the public demo site to the locally hosted e‑commerce API once the API is implemented.
-Split into multiple scenarios aligned with the Browser, Buyer, and Search‑heavy profiles from the mission brief.
-Add k6 thresholds for p95 latency and error rate based on the defined SLOs once baseline numbers are available for the custom API.
+• Migrate this scenario from the public demo site to the locally hosted e‑commerce API once the API is implemented.
+• Split into multiple scenarios aligned with the Browser, Buyer, and Search‑heavy profiles from the mission brief.
+• Add k6 thresholds for p95 latency and error rate based on the defined SLOs once baseline numbers are available for the custom API.
