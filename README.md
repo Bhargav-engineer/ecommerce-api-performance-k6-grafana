@@ -52,7 +52,7 @@ Initial peak assumption: ~50 requests per second across these flows, with checko
 - Observability: Grafana + Prometheus or APM tool (planned)
 - Containerization: Docker / Docker Compose (planned)
 
-- ## Getting Started (Current State)
+## Getting Started (Current State)
 
 Right now, this project includes a basic k6 smoke test hitting a public demo endpoint.
 
